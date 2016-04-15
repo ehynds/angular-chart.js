@@ -3,14 +3,13 @@ sudo: required
 dist: trusty
 node_js:
 - '5'
-addons:
-  apt:
-    packages:
-    - graphicsmagick
 before_install:
 - npm install bower
 - ./node_modules/bower/bin/bower install
 before_script:
+- sudo add-apt-repository ppa:dhor/myway -y
+- sudo apt-get update -qq
+- sudo apt-get install graphicsmagick -y
 - gm version
 after_success:
 - ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage/lcov.info
