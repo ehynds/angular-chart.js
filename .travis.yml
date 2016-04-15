@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-- '0.10'
+- '5'
 addons:
   apt:
     packages:
@@ -9,6 +9,8 @@ addons:
 before_install:
 - npm install bower
 - ./node_modules/bower/bin/bower install
+before_script:
+- gm version
 after_success:
 - ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage/lcov.info
 env:
